@@ -79,9 +79,19 @@ Test this function by hand in the console to get it working, and when you think 
 let testArray = [2, 3, 4]; //eslint-disable-line
 
 function sumArray(sumArr) { 
-    let suml = sum(testArray[0], testArray[1])[0];
-    let finalSum = sum(suml, testArray[2])[0];
-    let array = [finalSum, testArray[0] + "," + testArray[1] + "," + testArray[2] + " was passed in as an array of numbers, and " + finalSum + " is their sum."];
+    let suml = sum(sumArr[0], sumArr[1])[0];
+    let finalSum = sum(suml, sumArr[2])[0];
+    let array = [
+      finalSum,
+      sumArr[0] +
+        "," +
+        sumArr[1] +
+        "," +
+        sumArr[2] +
+        " was passed in as an array of numbers, and " +
+        finalSum +
+        " is their sum.",
+    ];
 
     return array;
 }
@@ -102,18 +112,14 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 
-let num = [2 ,3 ,4 ];
 function multiplyArray(multArr) {
-    let mul1 = multiply(multiply(num[0] ,num[1])[0],num[2])[0];
-    let msg = ["The numbers " + num[0] + "," + num[1] + "," + num[2] + " have a product of " + mul1 + "."];
-
-return msg , mul1 ;
-console.log(msg);
+  const multi = multiply(multiply(multArr[0], multArr[1])[0], multArr[2])[0];
+  const multiStr = "The numbers " + multArr + " have a product of " + multi + ".";
+  return [multi, multiStr];
 }
-multiplyArray(num);
+multiplyArray(testArray);
 
-//testMultiplyArray(testArray);
-
+testMultiplyArray(testArray);
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. 
 
 // You're done! Submit the link to the repo following the instructions in Canvas. Or, try out the stretch goal below...
@@ -135,10 +141,27 @@ Test this function by hand in the console to get it working, and when you think 
 // Write your code here
 let testDynamicArray = [1,2,3,4,5]; //eslint-disable-line
 
-function multiplyAnyArray(dynamicArray) { //eslint-disable-line
+function multiplyAnyArray(dynamicArray) { 
 
+let product = 1;
+  for (let i = 0; i < dynamicArray.length; i++) {
+    product *= dynamicArray[i];
+  }
+  let message = "The numbers ";
+  for (let i = 0; i < dynamicArray.length; i++) {
+    if (i === dynamicArray.length - 1) {
+      message += dynamicArray[i];
+    } else {
+      message += dynamicArray[i] + ",";
+    }
+  }
+  message += " have a product of " + product + ".";
+  return [product, message];
 }
+multiplyAnyArray(testDynamicArray);
 
+// Here is the test for multiplyArray(); uncomment it to run it
+testMultiplyAnyArray(testDynamicArray);
 // Here is the test for multiplyArray(); uncomment it to run it
 // testMultiplyAnyArray(testDynamicArray);
 
